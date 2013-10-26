@@ -1,12 +1,15 @@
 #ifndef LocTurist_
 #define LocTurist_
 
+#include <iostream>
+using namespace std;
+#include <string>
 
 class LocTurist{
 private:
 	string desc;
 public:
-	LocTurist();
+	LocTurist(void);
 	LocTurist(const string Desc);
 	LocTurist(const LocTurist &p);
 	~LocTurist();
@@ -15,17 +18,14 @@ public:
 
 	void setDesc(const string Desc);
 	
-	virtual void listar()const;
-	virtual LocTurist* clone() const =0;
-	virtual LocTurist& operator=(const LocTurist& LT);
-	virtual bool operator==(const LocTurist& LT)const=0;
-	virtual bool operator<(const LocTurist& LT)const=0;
-	virtual void escreve (ostream& out)const;
+	 virtual void listar()const;
+	 virtual LocTurist& operator=(const LocTurist& LT);
+	 virtual void escreve (ostream& out)const;
 
 };
 
-LocTurist::LocTurist(){
-	desc="";
+LocTurist::LocTurist(void){
+	desc=" ";
 }
 
 LocTurist::LocTurist(const string Desc){

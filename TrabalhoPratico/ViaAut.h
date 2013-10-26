@@ -1,36 +1,46 @@
 #ifndef ViaAut_
 #define ViaAut_
 #include "ViaLig.h"
+#include "LocTurist.h"
+#include <iostream>
+using namespace std;
+#include <string>
+
 class ViaAut:ViaLig{
 private:
 	double preco;
 public:
-	ViaAut();
-	ViaAut(const double preco, const int Cod, const int Km,const int MTemp);
+	ViaAut(void);
+	ViaAut(LocTurist* Loc1,LocTurist* Loc2, const string Cod, const int Km,const int MTemp, const double Preco);
 	ViaAut(const ViaAut &p);
 	~ViaAut();
 
-	int getCod() const;
+	LocTurist* getLoc1();
+	LocTurist* getLoc2();
+	string getCod() const;
 	int getKm() const;
 	int getMTemp() const;
 	double getPreco() const;
 	
+
+	void setLoc(LocTurist* Loc1, LocTurist* Loc2);
+	void setLoc1(LocTurist* Loc);
+	void setLoc2(LocTurist* Loc);
 	void setPreco(const double Preco);
-	void setCod(const int Cod);
+	void setCod(const string Cod);
 	void setKm(const int Km);
 	void setMTemp(const int MTemp);
 
-	virtual void listar()const;
-	virtual ViaLig* clone()const;
-	virtual ViaAut& operator=(const ViaAut& VA);
-	virtual bool operator==(const ViaAut& VA)const;
-	virtual bool operator<(const ViaAut& VA)const;
-	virtual void escreve (ostream& out)const;
+	 void listar()const;
+	 ViaAut& operator=(const ViaAut& VA);
+	 bool operator==(const ViaAut& VA)const;
+	 bool operator<(const ViaAut& VA)const;
+	 void escreve (ostream& out)const;
 };
-	ViaAut::ViaAut():ViaLig(){
+	ViaAut::ViaAut(void):ViaLig(){
 		preco=0;
 	}
-	ViaAut::ViaAut(const double Preco, const int Cod,const int Km,const int MTemp):ViaLig(Cod,Km,MTemp){
+	ViaAut::ViaAut(LocTurist* Loc1,LocTurist* Loc2, const string Cod, const int Km,const int MTemp, const double Preco):ViaLig(Loc1,Loc2,Cod,Km,MTemp){
 		preco=Preco;
 	}
 	ViaAut::ViaAut(const ViaAut &VA):ViaLig(VA){
@@ -38,7 +48,15 @@ public:
 	}
 	ViaAut::~ViaAut(){}
 
-	int ViaAut::getCod() const{
+
+
+	LocTurist* ViaAut::getLoc1(){
+		return ViaLig::getLoc1();
+	}
+	LocTurist* ViaAut::getLoc2(){
+		return ViaLig::getLoc2();
+	}
+	string ViaAut::getCod() const{
 		return ViaLig::getCod();
 	}
 	int ViaAut::getKm() const{
@@ -50,7 +68,18 @@ public:
 	double ViaAut::getPreco() const{
 		return preco;
 	}
-	void ViaAut::setCod(const int Cod){
+
+
+	void ViaAut::setLoc(LocTurist* Loc1, LocTurist* Loc2){
+		ViaLig::setLoc(Loc1,Loc2);
+	}
+	void ViaAut::setLoc1(LocTurist* Loc){
+		ViaLig::setLoc1(Loc);
+	}
+	void ViaAut::setLoc2(LocTurist* Loc){
+		ViaLig::setLoc2(Loc);
+	}
+	void ViaAut::setCod(const string Cod){
 		ViaLig::setCod(Cod);
 	}
 	void ViaAut::setKm(const int Km){
@@ -65,9 +94,6 @@ public:
 	void ViaAut::listar()const{
 		ViaLig::listar();
 		cout<<"Preço: "<<preco<<"€."<<endl;
-	}
-	ViaLig* ViaAut::clone() const{
-		return new ViaAut(*this);
 	}
 	ViaAut& ViaAut::operator=(const ViaAut& VA){
 		if(this!=&VA){

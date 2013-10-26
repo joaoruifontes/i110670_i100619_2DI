@@ -1,16 +1,19 @@
 #ifndef LocNatural_
 #define LocNatural_
 
+#include <iostream>
+using namespace std;
+#include <string>
+
 #include "LocTurist.h"
 class LocNatural:public LocTurist{
 	private:
 		int area;
 	public:
-		LocNatural();
+		LocNatural(void);
 		LocNatural(const int Area,const string Desc);
-		LocNatural(const int Area);
 		LocNatural(const LocNatural &LN);
-		virtual ~LocNatural();
+		 ~LocNatural();
 
 		void setArea(const int Area);
 		void setDesc(const string Desc);
@@ -19,22 +22,19 @@ class LocNatural:public LocTurist{
 		string getDesc() const;
 
 		void listar()const;
-		LocTurist* clone() const;
+		
 		LocNatural& operator=(const LocNatural& LN);
 		bool operator<(const LocNatural& LN);
 		bool operator==(const LocNatural& LN);
 		void escreve(ostream &out) const;
 };
-		LocNatural::LocNatural(){
+		LocNatural::LocNatural(void):LocTurist(){
 			area=0;
 		}
 		LocNatural::LocNatural(const int Area,const string Desc):LocTurist(Desc){
 			area=Area;
 		}
-		LocNatural::LocNatural(const int Area):LocTurist(){
-			area=Area;
-		}
-		LocNatural::LocNatural(const LocNatural &LN){
+		LocNatural::LocNatural(const LocNatural& LN){
 			area=LN.area;
 			setDesc(LN.getDesc());
 		}
@@ -59,9 +59,6 @@ class LocNatural:public LocTurist{
 			cout<<"---Local Natual---"<<endl;
 			cout<<"Área: "<<area<<endl;
 			LocTurist::listar();
-		}
-		LocTurist* LocNatural::clone() const{
-			return new LocNatural(*this);
 		}
 		LocNatural& LocNatural::operator=(const LocNatural& LN){
 			if(this!=&LN){

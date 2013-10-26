@@ -3,50 +3,47 @@
 
 #include "LocTurist.h"
 
-class LocHistorico:public LocTurist
+#include <iostream>
+using namespace std;
+#include <string>
+
+class LocHistorico: public LocTurist
 {
 private:
 	int tmed;
 	int abert;
 	int encerr;
 public:
-	LocHistorico();
-	LocHistorico(const int Tmed,const int Abert,const int Encerr, string desc);
-	LocHistorico(const int Tmed,const int Abert,const int Encerr);
+	LocHistorico(void);
+	LocHistorico(const int Tmed,const int Abert,const int Encerr, const string Desc);
 	LocHistorico(const LocHistorico &c);
-	virtual ~LocHistorico();
+	 ~LocHistorico();
 
 	void setTMed(const int Tmed);
 	void setAbert(const int Abert);
 	void setEncerr(const int Encerr);
 	void setDesc(const string Desc);
 	
-	int getTMEd() const;
+	int getTMed() const;
 	int getAbert() const;
 	int getEncerr() const;
 	string getDesc() const;
 
-	virtual void listar()const;
-	virtual LocTurist* clone() const;
-	LocHistorico& operator=(const LocHistorico& LH);
-	bool operator<(const LocHistorico& LH);
-	bool operator==(const LocHistorico& LH);
-	void escreve(ostream &out) const;
+	 void listar()const;
+	 LocHistorico& operator=(const LocHistorico& LH);
+	 virtual bool operator<(const LocHistorico& LH);
+	 bool operator==(const LocHistorico& LH);
+	 void escreve(ostream &out) const;
 
 };
 
-LocHistorico::LocHistorico():LocTurist(){
+LocHistorico::LocHistorico(void):LocTurist(){
 	tmed=0;
 	abert=1200;
 	encerr=1800;
 }
 
-LocHistorico::LocHistorico(const int Tmed,const int Abert,const int Encerr, string Desc):LocTurist(Desc){
-	tmed=Tmed;
-	abert=Abert;
-	encerr=Encerr;
-}
-LocHistorico::LocHistorico(const int Tmed,const int Abert,const int Encerr):LocTurist(){
+LocHistorico::LocHistorico(const int Tmed,const int Abert,const int Encerr, const string Desc):LocTurist(Desc){
 	tmed=Tmed;
 	abert=Abert;
 	encerr=Encerr;
@@ -88,10 +85,6 @@ string LocHistorico::getDesc() const{
 	return LocTurist::getDesc();
 }
 
-LocTurist* LocHistorico::clone() const{
-	return new LocHistorico(*this);
-}
-
 void LocHistorico::listar()const{
 	cout<<"---Local Historico---"<<endl;
 	cout<<"Tempo Médio: "<<tmed<<endl;
@@ -116,11 +109,11 @@ bool LocHistorico::operator<(const LocHistorico& LH){
 		return false;
 }
 bool LocHistorico::operator==(const LocHistorico& LH){
-	if(tmed==LH.tmed && abert==LH.abert && encerr=LH.encerr && getDesc()==LH.getDesc()){
+	if(LH.abert==abert && LH.getDesc()==getDesc() && LH.encerr==encerr && LH.tmed==tmed){
 		return true;
-	else
+	}else{
 		return false;
-	}
+	}//*/
 }
 void LocHistorico::escreve(ostream &out) const{
 	out << "Local Historico aberto das: " << abert << "hrs as " << encerr <<"hrs."<<"Tempo médio de visita: "<<tmed<<endl;
