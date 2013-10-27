@@ -62,12 +62,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Teste.h" />
     <ClInclude Include="LocNatural.h" />
     <ClInclude Include="LocTurist.h" />
     <ClInclude Include="LocHistorico.h" />
     <ClInclude Include="ViaAut.h" />
     <ClInclude Include="ViaLig.h" />
     <ClInclude Include="ViaNac.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Locais.txt" />
+    <Text Include="Vias.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

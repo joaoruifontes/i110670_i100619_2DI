@@ -6,17 +6,17 @@
 using namespace std;
 #include <string>
 
-class ViaAut:ViaLig{
+class ViaAut: public ViaLig{
 private:
 	double preco;
 public:
 	ViaAut(void);
-	ViaAut(LocTurist* Loc1,LocTurist* Loc2, const string Cod, const int Km,const int MTemp, const double Preco);
+	ViaAut(LocTurist* Loc1,LocTurist* Loc2, const string  Cod, const int Km,const int MTemp, const double Preco);
 	ViaAut(const ViaAut &p);
 	~ViaAut();
 
-	LocTurist* getLoc1();
-	LocTurist* getLoc2();
+	LocTurist*  getLoc1();
+	LocTurist*  getLoc2();
 	string getCod() const;
 	int getKm() const;
 	int getMTemp() const;
@@ -33,14 +33,14 @@ public:
 
 	 void listar()const;
 	 ViaAut& operator=(const ViaAut& VA);
-	 bool operator==(const ViaAut& VA)const;
-	 bool operator<(const ViaAut& VA)const;
+	 virtual bool operator==(const ViaAut& VA)const;
+	 virtual bool operator<(const ViaAut& VA)const;
 	 void escreve (ostream& out)const;
 };
 	ViaAut::ViaAut(void):ViaLig(){
 		preco=0;
 	}
-	ViaAut::ViaAut(LocTurist* Loc1,LocTurist* Loc2, const string Cod, const int Km,const int MTemp, const double Preco):ViaLig(Loc1,Loc2,Cod,Km,MTemp){
+	ViaAut::ViaAut(LocTurist* Loc1,LocTurist* Loc2, const string  Cod, const int Km,const int MTemp, const double Preco):ViaLig(Loc1,Loc2,Cod,Km,MTemp){
 		preco=Preco;
 	}
 	ViaAut::ViaAut(const ViaAut &VA):ViaLig(VA){
@@ -50,10 +50,10 @@ public:
 
 
 
-	LocTurist* ViaAut::getLoc1(){
+	LocTurist*  ViaAut::getLoc1(){
 		return ViaLig::getLoc1();
 	}
-	LocTurist* ViaAut::getLoc2(){
+	LocTurist*  ViaAut::getLoc2(){
 		return ViaLig::getLoc2();
 	}
 	string ViaAut::getCod() const{

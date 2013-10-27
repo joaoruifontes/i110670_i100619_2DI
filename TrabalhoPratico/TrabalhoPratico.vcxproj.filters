@@ -33,5 +33,21 @@
     <ClInclude Include="ViaNac.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Teste.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Locais.txt">
+      <Filter>Header Files</Filter>
+    </Text>
+    <Text Include="Vias.txt">
+      <Filter>Header Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

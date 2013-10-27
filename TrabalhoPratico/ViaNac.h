@@ -6,18 +6,18 @@
 using namespace std;
 #include <string>
 
-class ViaNac:ViaLig
+class ViaNac: public ViaLig
 {
 private:
 	string tpav;
 public:
 	ViaNac(void);
-	ViaNac(LocTurist* Loc1, LocTurist* Loc2, const string Cod, const int Km,const int MTemp,const string preco);
+	ViaNac(LocTurist* Loc1, LocTurist* Loc2, const string  Cod, const int Km,const int MTemp,const string TPav);
 	ViaNac(const ViaNac &p);
 	~ViaNac();
 
-	LocTurist* getLoc1();
-	LocTurist* getLoc2();
+	LocTurist*  getLoc1();
+	LocTurist*  getLoc2();
 	string getCod() const;
 	int getKm() const;
 	int getMTemp() const;
@@ -32,15 +32,15 @@ public:
 	void setMTemp(const int MTemp);
 
 	 void listar()const;
-	 ViaNac& operator=(const ViaNac& VN);
+	 virtual ViaNac& operator=(const ViaNac& VN);
 	 bool operator==(const ViaNac& VN)const;
-	 bool operator<(const ViaNac& VN)const;
+	 virtual bool operator<(const ViaNac& VN)const;
 	 void escreve (ostream& out)const;
 };
 	ViaNac::ViaNac(void):ViaLig(){
 		tpav="";
 	}
-	ViaNac::ViaNac(LocTurist* Loc1,LocTurist* Loc2, const string Cod,const int Km,const int MTemp, const string TPav):ViaLig(Loc1,Loc2,Cod,Km,MTemp){
+	ViaNac::ViaNac(LocTurist* Loc1,LocTurist* Loc2, const string  Cod,const int Km,const int MTemp, const string  TPav):ViaLig(Loc1,Loc2,Cod,Km,MTemp){
 		tpav=TPav;
 	}
 	ViaNac::ViaNac(const ViaNac &VN):ViaLig(VN){
@@ -50,10 +50,10 @@ public:
 
 
 
-	LocTurist* ViaNac::getLoc1(){
+	LocTurist*  ViaNac::getLoc1(){
 		return ViaLig::getLoc1();
 	}
-	LocTurist* ViaNac::getLoc2(){
+	LocTurist*  ViaNac::getLoc2(){
 		return ViaLig::getLoc2();
 	}
 	string ViaNac::getCod() const{

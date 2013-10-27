@@ -31,10 +31,10 @@ public:
 	void setKm(const int Km);
 	void setMTemp(const int MTemp);
 
-	virtual void listar()const;
+	void listar()const;
 	virtual ViaLig& operator=(const ViaLig& VL);
 	virtual bool operator<(const ViaLig& VL)const;
-	virtual void escreve (ostream& out)const;
+	void escreve (ostream& out)const;
 };
 	ViaLig::ViaLig(void){
 		loc1=NULL;
@@ -43,7 +43,7 @@ public:
 		km=0;
 		mtemp=0;
 	}
-	ViaLig::ViaLig( LocTurist* Loc1,LocTurist* Loc2, const string Cod ,const int Km, const int MTemp){
+	ViaLig::ViaLig( LocTurist* Loc1,LocTurist* Loc2, const string  Cod ,const int Km, const int MTemp){
 		loc1=Loc1;
 		loc2=Loc2;
 		cod=Cod;
@@ -98,7 +98,7 @@ public:
 
 
 	void ViaLig::listar()const{
-		cout<<"Código de via: "<<cod<<" Kilómetros: "<<km<<"km Tempo Médio de viagem: "<<mtemp<<"min "; 
+		cout<<loc1->getDesc()<<" / "<<loc2->getDesc()<<" | Código de via: "<<cod<<" Kilómetros: "<<km<<"km Tempo Médio de viagem: "<<mtemp<<"min "; 
 	}
 	
 	ViaLig& ViaLig::operator=(const ViaLig& VL){
@@ -114,6 +114,7 @@ public:
 				return false;
 	}
 	void ViaLig::escreve(ostream& out) const{
+		out<<loc1->getDesc()<<" / "<<loc2->getDesc()<<endl;
 		out<<"Código: "<<cod<<endl;
 		out<<"Kilómetros: "<<km<<endl;
 		out<<"Tempo Médio: "<<mtemp<<endl;

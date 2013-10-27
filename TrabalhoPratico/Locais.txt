@@ -1,0 +1,5 @@
+Museu Agricola,120,570,1110
+Parque do Penedo,5500
+Museu Industrial,210,540,870
+Parque Central,10000
+Pinhal do Rio,6000
