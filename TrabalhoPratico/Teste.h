@@ -19,8 +19,8 @@ int countH=0,countN=0;
 class Teste
 {
 private:
-	vector<LocTurist> locais;
-	vector<ViaLig> vias;
+	vector<LocTurist*> locais;
+	vector<ViaLig*> vias;
 
 public:
 
@@ -54,10 +54,10 @@ void Teste::LerViasLigacao(){
 					string loc1(linha.substr(inic,pos-inic));
 					for (int i = 0; i < locais.size(); i++)
 					{
-						if (loc1.compare(locais[i].getDesc()))
+						if (loc1.compare(locais[i]->getDesc()))
 						{
 
-							lt1=&locais[i];
+							lt1=locais[i];
 						}
 					}
 					pos++;
@@ -68,9 +68,9 @@ void Teste::LerViasLigacao(){
 					string loc2(linha.substr(inic,pos-inic));
 					for (int i = 0; i < locais.size(); i++)
 					{
-						if (loc2.compare(locais[i].getDesc()))
+						if (loc2.compare(locais[i]->getDesc()))
 						{
-							lt2=&locais[i];
+							lt2=locais[i];
 						}
 					}
 					pos++;
@@ -105,14 +105,15 @@ void Teste::LerViasLigacao(){
 					//Encontra e retira a sexta palavra até a virgula
 					inic=pos;
 					pos= linha.find(',', inic);
-					string PrecoSTR(linha.substr(inic,pos-inic));
-					stringstream ss5(PrecoSTR);
+					string ultimapoz(linha.substr(inic,pos-inic));
+					stringstream ss5(ultimapoz);
 					int preco = 0;
 					ss5 >> preco;
 					pos++;
 
 
-					int tamanho=PrecoSTR.size();
+
+					int tamanho=ultimapoz.size();
 					char aux[50];
 					int i;
 					for(i=0;i<tamanho;i++){
@@ -120,17 +121,17 @@ void Teste::LerViasLigacao(){
 					}
 					//Passar string para char
 					for(i = 0; i < tamanho; i++){
-						PrecoSTR[i]=aux[i];
+						ultimapoz[i]=aux[i];
 					}
 
 					//ver se é inteiro ou string
 					if(isalpha(aux[0])){
 						//invocar coinstrutor estradas nacionais
-						ViaNac vn(lt1,lt2,via, km, tempomedio ,PrecoSTR);
-						vias.push_back(vn);
+						ViaNac vn(lt1,lt2,via, km, tempomedio ,ultimapoz);
+						vias.push_back(&vn);
 					}else{
 						ViaAut va(lt1,lt2,via,km,tempomedio,preco);
-						vias.push_back(va);
+						vias.push_back(&va);
 					}
 				}
 			}
@@ -176,8 +177,7 @@ void Teste::LerLocais(){
 
 					//construtor de locais naturais
 					LocNatural ln(area, loc1);
-					locais.push_back(ln);
-					countN++;
+					locais.push_back(&ln);
 
 				}else{
 					int inic=0;
@@ -213,8 +213,7 @@ void Teste::LerLocais(){
 
 					//construtor de locais historicos
 					LocHistorico lh(tempomedio, abertura, fecho, loc1);
-					locais.push_back(lh);
-					countH++;
+					locais.push_back(&lh);
 				}
 			}
 		}
@@ -226,7 +225,7 @@ void Teste::LerLocais(){
 
 void Teste::Contabilizar(){
 	
-	/*for(vector<LocTurist>::const_iterator it = locais.begin(); it != locais.end(); ++it){
+	for(vector<LocTurist*>::iterator it = locais.begin(); it != locais.end(); ++it){
 		if(LocHistorico* H = dynamic_cast<LocHistorico*>(*it))
 			countH++;
 		else if(LocNatural* N = dynamic_cast<LocNatural*>(*it))
@@ -238,16 +237,16 @@ void Teste::Contabilizar(){
 	do{
 		exit=true;
 		for(int i=0; i<locais.size()-1;i++){
-			if ((locais[i].getDesc()) > (locais[i+1].getDesc())){
+			if ((locais[i]->getDesc()) > (locais[i+1]->getDesc())){
                 exit = false;
-				LocTurist temp=locais[i];
+				LocTurist* temp=locais[i];
 				locais[i]=locais[i+1];
 				locais[i+1]=temp;
 			}
 		}
 	}while(!exit);
 	for(int i=0;i<locais.size();i++){
-		cout<<locais[i].getDesc()<<endl;
+		cout<<locais[i]->getDesc()<<endl;
 	}
 	cin.get();
 }
