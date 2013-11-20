@@ -7,6 +7,13 @@
 #include "Teste.h"
 #include <vector>
 
+void carregamentos(bool ranflag){
+		if(ranflag){
+			cout<<"Carregamento feito com sucesso!!"<<endl;
+		}else{
+			cout<<"Erro no carregamento do fixeiro"<<endl;
+		}
+}
 
 void main(){
 	LocHistorico lochist1();
@@ -24,9 +31,32 @@ void main(){
 	ViaAut viaaut1();
 	ViaAut viaaut2(&lochist2,&lochist2,"A3",20,20,20);
 	//*/
-	
 	Teste x;
-	x.LerLocais();
-	x.LerViasLigacao();
-	x.Contabilizar();
+	bool exit=false,ranflag;
+	char op;
+	while(!exit){
+		cout<<"Opção 1 - Ler Locais"<<endl;
+		cout<<"Opção 2 - Ler Vias de Ligação"<<endl;
+		cout<<"Opção 3 - Contabilizar"<<endl;
+		cout<<"Opção 4 - Sair"<<endl;
+		cin>>op;
+		switch (op){
+		case '1':
+			ranflag=x.LerLocais();
+			carregamentos(ranflag);
+			break;
+		case '2':
+			ranflag=x.LerViasLigacao();
+			carregamentos(ranflag);
+			break;
+		case '3':
+			x.Contabilizar();
+			break;
+		case '4':
+			exit=true;
+			break;
+		default:
+			cout<<"Comando não reconhecido"<<endl;
+		}
+	}
 };

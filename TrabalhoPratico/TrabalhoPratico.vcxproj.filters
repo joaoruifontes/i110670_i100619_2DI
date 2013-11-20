@@ -36,6 +36,21 @@
     <ClInclude Include="Teste.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Mapa Digital.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphEdge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphStl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphStlPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphVertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

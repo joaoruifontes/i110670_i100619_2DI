@@ -62,6 +62,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="graphEdge.h" />
+    <ClInclude Include="graphStl.h" />
+    <ClInclude Include="graphStlPath.h" />
+    <ClInclude Include="graphVertex.h" />
+    <ClInclude Include="Mapa Digital.h" />
     <ClInclude Include="Teste.h" />
     <ClInclude Include="LocNatural.h" />
     <ClInclude Include="LocTurist.h" />

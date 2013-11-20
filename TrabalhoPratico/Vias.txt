@@ -2,5 +2,5 @@ Museu Agricola,Parque do Penedo,EN1,100,90,paralelo
 Museu Agricola,Parque do Penedo,A3,80,20,3.2
 Museu Industrial,Museu Agricola,A2,60,10,7.05
 Parque do Penedo,Parque Central,EN2,55,35,asfalto
-Parque do Penedo,Museu Industrial,A1,85,23,5.90
+Parque do Penedo,Museu Industrial,A1,s,23,5.90
 Pinhal do Rio,Museu Industrial,EN3,120,88,paralelo

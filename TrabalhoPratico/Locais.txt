@@ -1,4 +1,4 @@
-Museu Agricola,120,570,1110
+Museu Agricola,a,570,1110
 Parque do Penedo,5500
 Museu Industrial,210,540,870
 Parque Central,10000
